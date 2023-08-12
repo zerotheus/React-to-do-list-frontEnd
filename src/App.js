@@ -21,7 +21,6 @@ function App() {
 
 		try {
 			const responseApi = await api.authenticate(data)
-			await api.authenticate(data)
 			console.log(responseApi.status)
 			console.log(responseApi.data)
 			api.saveLoggerData(responseApi.data)

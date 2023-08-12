@@ -1,0 +1,63 @@
+/* Estilos para a seção principal */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Estilos para o cabeçalho */
+  .header {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Estilos para a lista de tarefas */
+  .task-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  /* Estilos para cada item de tarefa */
+  .task-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para o formulário de criação de tarefas */
+  .new-task-form {
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+  }
+  
+  .new-task-form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .new-task-form input[type="text"],
+  .new-task-form textarea,
+  .new-task-form input[type="date"] {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .new-task-form button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+  }
+  
+  .new-task-form button:hover {
+    background-color: #0056b3;
+  }
+  

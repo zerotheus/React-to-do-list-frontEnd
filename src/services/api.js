@@ -30,6 +30,54 @@ const authService = {
 		const endPoint = `${apiBaseUrl}/API/GetAllTaskUnfinished/${userId}`
 		return axios.get(endPoint)
 	},
+
+	async enviaNovaTask(dadosDaTask, userId) {
+		const endPoint = `${apiBaseUrl}/API/createTask/${userId}`
+		console.log(dadosDaTask.deadLine)
+		if (
+			dadosDaTask.deadLine !== "" &&
+			dadosDaTask.deadLine !== undefined &&
+			dadosDaTask.deadLine !== null
+		) {
+			dadosDaTask = {
+				nome: dadosDaTask.nome,
+				descricao: dadosDaTask.descricao,
+				deadLine: dadosDaTask.deadLine + "T23:59:59",
+			}
+		}
+		return axios.post(endPoint, dadosDaTask)
+	},
+
+	async editaTask(dadosDaTask, taskId) {
+		console.log(taskId)
+		console.log(dadosDaTask.deadLine)
+		if (
+			dadosDaTask.deadLine !== "" &&
+			dadosDaTask.deadLine !== undefined &&
+			dadosDaTask.deadLine !== null
+		) {
+			dadosDaTask = {
+				nome: dadosDaTask.nome,
+				descricao: dadosDaTask.descricao,
+				deadLine: dadosDaTask.deadLine + "T23:59:59",
+			}
+		}
+		console.log(dadosDaTask)
+		const endPoint = `${apiBaseUrl}/API/updateTaskById/${taskId}`
+		return axios.put(endPoint, dadosDaTask)
+	},
+
+	async deletaTask(taskId) {
+		console.log(taskId)
+		const endPoint = `${apiBaseUrl}/API/deleteTaskById/${taskId}`
+		return axios.delete(endPoint)
+	},
+
+	async concluiTask(taskId, userId) {
+		console.log(taskId)
+		const endPoint = `${apiBaseUrl}/API/FinishTask/${taskId}/${userId}`
+		return axios.put(endPoint)
+	},
 }
 
 export default authService

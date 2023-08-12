@@ -25,6 +25,11 @@ const authService = {
 			return null
 		}
 	},
+
+	async getAllUserTasks(userId) {
+		const endPoint = `${apiBaseUrl}/API/GetAllTaskUnfinished/${userId}`
+		return axios.get(endPoint)
+	},
 }
 
 export default authService

@@ -61,6 +61,45 @@ function TasksPage({ userId, dado, fetchUserTasks }) {
 		}
 	}
 
+	async function handleConcludeClick(taskId, userId) {
+		const response = api.concluiTask(parseInt(taskId), userId)
+		if (response) {
+			setAllUserTasks(allUserTasks.filter((task) => task.taskId !== taskId))
+			setAllUserTasks([...allUserTasks, response.data])
+		}
+	}
+
+	async function handleSaveClick(
+		taskId,
+		editedTitle,
+		editedDescription,
+		editedDeadline,
+		setEditMode
+	) {
+		let dadosEditados = {
+			nome: editedTitle,
+			descricao: editedDescription,
+			deadLine: editedDeadline,
+		}
+
+		try {
+			const response = await api.editaTask(dadosEditados, parseInt(taskId))
+			if (response) {
+				const updatedTasks = allUserTasks.map((task) => {
+					if (task.taskId === taskId) {
+						return { ...task, ...dadosEditados }
+					}
+					return task
+				})
+				setAllUserTasks(updatedTasks)
+			}
+		} catch (error) {
+			console.error(error)
+		}
+
+		setEditMode(false)
+	}
+
 	return (
 		<>
 			<body>
@@ -77,6 +116,8 @@ function TasksPage({ userId, dado, fetchUserTasks }) {
 											data={data}
 											userId={parseInt(userId)}
 											handleDeleteClick={handleDeleteClick}
+											handleConcludeClick={handleConcludeClick}
+											handleSaveClick={handleSaveClick}
 										/>
 									</li>
 							  ))

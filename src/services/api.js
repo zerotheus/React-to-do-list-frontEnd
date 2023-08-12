@@ -50,11 +50,13 @@ const authService = {
 
 	async editaTask(dadosDaTask, taskId) {
 		console.log(taskId)
+		console.log(dadosDaTask)
 		console.log(dadosDaTask.deadLine)
 		if (
 			dadosDaTask.deadLine !== "" &&
 			dadosDaTask.deadLine !== undefined &&
-			dadosDaTask.deadLine !== null
+			dadosDaTask.deadLine !== null &&
+			dadosDaTask.deadLine.length !== 19
 		) {
 			dadosDaTask = {
 				nome: dadosDaTask.nome,

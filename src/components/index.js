@@ -1,35 +1,20 @@
 import React, { useState } from "react"
 import api from "../services/api"
 
-function Notes({ data, userId, handleDeleteClick }) {
+function Notes({
+	data,
+	userId,
+	handleDeleteClick,
+	handleConcludeClick,
+	handleSaveClick,
+}) {
 	console.log(userId)
 	const [editMode, setEditMode] = useState(false)
 	const [editedTitle, setEditedTitle] = useState(data.nome)
 	const [editedDescription, setEditedDescription] = useState(data.descricao)
 	const [editedDeadline, setEditedDeadline] = useState(data.deadLine)
-
 	const handleEditClick = () => {
 		setEditMode(true)
-	}
-
-	const handleSaveClick = () => {
-		const dadosEditados = {
-			nome: editedTitle,
-			descricao: editedDescription,
-			deadLine: editedDeadline,
-		}
-		const response = api.editaTask(dadosEditados, parseInt(data.taskId))
-		data = {
-			data: data.taskId,
-			nome: response.nome,
-			descricao: response.descricao,
-			deadLine: response.deadLine,
-		}
-		setEditMode(false)
-	}
-
-	const handleConcludeClick = () => {
-		api.concluiTask(parseInt(data.taskId), userId)
 	}
 
 	return (
@@ -50,7 +35,19 @@ function Notes({ data, userId, handleDeleteClick }) {
 						value={editedDeadline}
 						onChange={(e) => setEditedDeadline(e.target.value)}
 					/>
-					<button onClick={handleSaveClick}>Save</button>
+					<button
+						onClick={() =>
+							handleSaveClick(
+								data.taskId,
+								editedTitle,
+								editedDescription,
+								editedDeadline,
+								setEditMode
+							)
+						}
+					>
+						Save
+					</button>
 				</div>
 			) : (
 				<>
@@ -71,7 +68,9 @@ function Notes({ data, userId, handleDeleteClick }) {
 					<p>Membros: Membro 1, Membro 2</p>
 					<button onClick={handleEditClick}>Edit</button>
 					<button onClick={() => handleDeleteClick(data.taskId)}>Delete</button>
-					<button onClick={handleConcludeClick}>Concluir</button>
+					<button onClick={() => handleConcludeClick(data.taskId, userId)}>
+						Concluir
+					</button>
 				</>
 			)}
 		</div>

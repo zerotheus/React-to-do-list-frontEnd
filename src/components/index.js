@@ -65,7 +65,6 @@ function Notes({
 					<p>
 						<strong>{JSON.stringify(data.deadLine)}</strong>
 					</p>
-					<p>Membros: Membro 1, Membro 2</p>
 					<button onClick={handleEditClick}>Edit</button>
 					<button onClick={() => handleDeleteClick(data.taskId)}>Delete</button>
 					<button onClick={() => handleConcludeClick(data.taskId, userId)}>

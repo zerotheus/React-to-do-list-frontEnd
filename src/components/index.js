@@ -8,7 +8,7 @@ function Notes({
 	handleConcludeClick,
 	handleSaveClick,
 }) {
-	console.log(userId)
+	console.log(data)
 	const [editMode, setEditMode] = useState(false)
 	const [editedTitle, setEditedTitle] = useState(data.nome)
 	const [editedDescription, setEditedDescription] = useState(data.descricao)

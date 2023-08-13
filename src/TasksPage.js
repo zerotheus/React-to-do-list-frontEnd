@@ -64,8 +64,8 @@ function TasksPage({ userId, dado, fetchUserTasks }) {
 	async function handleConcludeClick(taskId, userId) {
 		const response = api.concluiTask(parseInt(taskId), userId)
 		if (response) {
-			setAllUserTasks(allUserTasks.filter((task) => task.taskId !== taskId))
 			setAllUserTasks([...allUserTasks, response.data])
+			setAllUserTasks(allUserTasks.filter((task) => task.taskId !== taskId))
 		}
 	}
 

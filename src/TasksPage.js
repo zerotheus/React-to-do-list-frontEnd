@@ -111,7 +111,7 @@ function TasksPage({ userId, dado, fetchUserTasks }) {
 					<ul class="task-list">
 						{Array.isArray(allUserTasks)
 							? allUserTasks.map((data) => (
-									<li class="task-item" key={data.id}>
+									<li class="task-item">
 										<Notes
 											data={data}
 											userId={parseInt(userId)}
